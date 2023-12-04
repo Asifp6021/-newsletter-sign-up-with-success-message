@@ -42,7 +42,7 @@ function showError() {
 	emailInput.style.border = '2px solid red';
 	emailInput.style.color = 'red';
 	setTimeout(() => {
-		emailInput.style.border = '1.5px solid hsl(231, 7%, 60%) ';
+		emailInput.style.border = '2px solid hsl(231, 7%, 60%) ';
 		errorMsg.classList.add('hidden');
 		emailInput.style.color = 'hsl(234, 29%, 20%)';
 	}, 2000);
