@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="./assets/images/favicon-32x32.png" />
+
+		<link
+			rel="stylesheet"
+			href="CSS/style.css" />
+
+		<title>
+			Frontend Mentor | Newsletter sign-up form with success message
+		</title>
+	</head>
+	<body>
+		<section class="newsletter flex">
+			<div class="newsletter__content grid">
+				<img
+					src="assets/images/illustration-sign-up-mobile.svg"
+					alt="banner"
+					loading="lazy"
+					class="newsletter__content--bannerImg-mobile" />
+				<img
+					src="assets/images/illustration-sign-up-desktop.svg"
+					alt="banner"
+					class="newsletter__content--bannerImg-desktop" />
+
+				<div class="newsletter__content--data flex-clmn">
+					<div class="newsletter__content--data-heading flex-clmn">
+						<h1 class="newsletter__content--data-heading__title">
+							Stay updated!
+						</h1>
+						<p class="newsletter__content--data-heading__desc">
+							Join 60,000+ product managers receiving monthly updates on:
+						</p>
+					</div>
+
+					<ul class="newsletter__content--data-services flex-clmn">
+						<li class="newsletter__content--data-service flex">
+							<img
+								src="assets/images/icon-list.svg"
+								alt="mark"
+								loading="lazy"
+								class="newsletter__content--data-service__img" />
+							<p class="newsletter__content--data-serviceIs">
+								Product discovery and building what matters
+							</p>
+						</li>
+
+						<li class="newsletter__content--data-service flex">
+							<img
+								src="assets/images/icon-list.svg"
+								alt="mark"
+								loading="lazy"
+								class="newsletter__content--data-service__img" />
+							<p class="newsletter__content--data-serviceIs">
+								Measuring to ensure updates are a success
+							</p>
+						</li>
+						<li class="newsletter__content--data-service flex">
+							<img
+								src="assets/images/icon-list.svg"
+								alt="mark"
+								loading="lazy"
+								class="newsletter__content--data-service__img" />
+							<p class="newsletter__content--data-serviceIs">And much more!</p>
+						</li>
+					</ul>
+
+					<form class="newsletter__content--data-form flex-clmn">
+						<fieldset class="newsletter__content--data-form__email flex-clmn">
+							<div class="flex">
+								<p class="email">Email address</p>
+								<p class="error hidden">Valid email Required</p>
+							</div>
+							<input
+								type="text"
+								placeholder="email@company.com" />
+						</fieldset>
+						<button
+							class="btn"
+							type="button"
+							aria-label="subscribe">
+							Subscribe to monthly newletter
+						</button>
+					</form>
+				</div>
+			</div>
+		</section>
+
+		<!-- ------------------------- success -->
+		<section class="success flex hidden">
+			<div class="success__content flex-clmn">
+				<img
+					class="success__content--img"
+					src="assets/images/icon-success.svg"
+					alt="marked-circle"
+					loading="lazy" />
+
+				<h1 class="success__content--title">
+					Thanks for <span>subscribing!</span>
+				</h1>
+
+				<p class="success__content--para">
+					A confirmation email has been sent to
+					<span id="confirmation-email">ash@loremcompany.com</span> Please open
+					it and click the button inside to confirm your subscription.
+				</p>
+
+				<button
+					class="success__content--btn btn"
+					type="button"
+					aria-label="Dismiss message">
+					Dismiss message
+				</button>
+			</div>
+		</section>
+
+		<script src="index.js"></script>
+	</body>
+</html>
