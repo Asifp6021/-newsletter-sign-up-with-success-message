@@ -21,14 +21,14 @@ emailInput.addEventListener('input', function (e) {
 	const emailInputValue = e.target.value;
 	const result = checkEmail(emailInputValue);
 
-	if (result === true) {
+	if (result) {
 		validate = true;
 	} else {
 		validate = false;
 	}
 });
 
-// regular expression validating email
+// regular expression for  validating email
 function checkEmail(getEmail) {
 	let email = new RegExp('^[a-z0-9]+@gmail.com$', 'i');
 	const result = email.test(getEmail);
@@ -38,13 +38,11 @@ function checkEmail(getEmail) {
 // error function to show error
 function showError() {
 	errorMsg.classList.remove('hidden');
-	errorMsg.style.color = 'red';
-	emailInput.style.border = '2px solid red';
-	emailInput.style.color = 'red';
+	emailInput.classList.add('input-error');
 	setTimeout(() => {
-		emailInput.style.border = '2px solid hsl(231, 7%, 60%) ';
 		errorMsg.classList.add('hidden');
-		emailInput.style.color = 'hsl(234, 29%, 20%)';
+		emailInput.classList.remove('input-error');
+		
 	}, 2000);
 }
 
@@ -54,7 +52,7 @@ document.addEventListener('keyup', function (e) {
 	if (e.key === 'Enter' && !newsLetter.classList.contains('hidden')) {
 		validateEmail();
 	} else if (e.key === 'Enter') {
-		redirectToNewletter();
+		redirectToNewsletter();
 	}
 });
 
@@ -64,13 +62,13 @@ formEl.addEventListener('submit', function (e) {
 
 function validateEmail() {
 	if (emailInput.value === '') {
-		errorMsg.innerText = 'Please enter email Id';
+		errorMsg.textContent = 'Please enter email Id';
 		showError();
 		return;
 	}
 
-	if (validate === false) {
-		errorMsg.innerText = 'Valid email Required';
+	if (!validate) {
+		errorMsg.textContent = 'Valid email Required';
 		showError();
 		return;
 	}
@@ -79,14 +77,14 @@ function validateEmail() {
 
 	const emailIs = emailInput.value;
 
-	confirmationEmail.innerText = emailIs;
+	confirmationEmail.textContent = emailIs;
 }
 
 // --------------------------------------------------------------------------------------------------------------
 
-dismissBtn.addEventListener('click', redirectToNewletter);
+dismissBtn.addEventListener('click', redirectToNewsletter);
 
-function redirectToNewletter() {
+function redirectToNewsletter() {
 	toggleSection(successMessage, newsLetter);
 	emailInput.value = '';
 }
