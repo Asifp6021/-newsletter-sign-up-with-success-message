@@ -14,8 +14,6 @@ const emailInput = document.querySelector('.newsletter input[type="text"]');
 const errorMsg = document.querySelector('.error');
 const formEl = document.querySelector('form');
 
-console.log(emailDomains);
-
 // ------------------------------------------------------------------------------------------
 let arr = [];
 
@@ -51,7 +49,6 @@ function checkEmail(getEmail) {
 			const value = emailDomains[i];
 			let email = new RegExp(`^[a-z0-9!#$%&'*+/=?^_\`{|}~-]+@${value}$`, 'i');
 			const result = email.test(getEmail);
-			console.log(result);
 			return result;
 		}
 	}
@@ -81,6 +78,7 @@ formEl.addEventListener('submit', function (e) {
 	e.preventDefault();
 });
 
+// validating email function
 function validateEmail() {
 	if (emailInput.value === '') {
 		errorMsg.textContent = 'Please enter email Id';
