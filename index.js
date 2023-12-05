@@ -26,7 +26,7 @@ emailInput.addEventListener('input', function (e) {
 	const emailInputValue = e.target.value;
 
 	arr.push(emailInputValue);
-	const result = getValueAfterAtSymball(emailInputValue);
+	const result = checkEmail(emailInputValue);
 
 	if (result) {
 		validate = true;
@@ -36,14 +36,14 @@ emailInput.addEventListener('input', function (e) {
 });
 
 // checking email domains for validate if it is present in array then it will be validated
-function getValueAfterAtSymball(getEmail) {
+function checkEmail(getEmail) {
 	const valueIs = arr[arr.length - 1];
 	const valueIsArr = valueIs.split('');
 
 	let sliceArr = [];
 
 	const getIndexof = valueIsArr.indexOf('@');
-	const sliceIt = valueIsArr.slice(getIndexof + 1);
+	const sliceIt = valueIsArr.slice(getIndexof + 1); //getting domain after @symball
 	const converToString = sliceIt.join('');
 
 	for (let i = 0; i < emailDomains.length; i++) {
