@@ -1,3 +1,5 @@
+import { emailDomains } from './email_Domain.js';
+
 const successMessage = document.querySelector('.success');
 const newsLetter = document.querySelector('.newsletter');
 const subscribeBtn = document.querySelector(
@@ -12,14 +14,19 @@ const emailInput = document.querySelector('.newsletter input[type="text"]');
 const errorMsg = document.querySelector('.error');
 const formEl = document.querySelector('form');
 
+console.log(emailDomains);
+
 // ------------------------------------------------------------------------------------------
+let arr = [];
 
 let validate = false; //managing state to show error
 
 // grabbing input from email input box
 emailInput.addEventListener('input', function (e) {
 	const emailInputValue = e.target.value;
-	const result = checkEmail(emailInputValue);
+
+	arr.push(emailInputValue);
+	const result = getValueAfterAtSymball(emailInputValue);
 
 	if (result) {
 		validate = true;
@@ -28,11 +35,26 @@ emailInput.addEventListener('input', function (e) {
 	}
 });
 
-// regular expression for  validating email
-function checkEmail(getEmail) {
-	let email = new RegExp('^[a-z0-9]+@gmail.com$', 'i');
-	const result = email.test(getEmail);
-	return result;
+// checking email domains for validate if it is present in array then it will be validated
+function getValueAfterAtSymball(getEmail) {
+	const valueIs = arr[arr.length - 1];
+	const valueIsArr = valueIs.split('');
+
+	let sliceArr = [];
+
+	const getIndexof = valueIsArr.indexOf('@');
+	const sliceIt = valueIsArr.slice(getIndexof + 1);
+	const converToString = sliceIt.join('');
+
+	for (let i = 0; i < emailDomains.length; i++) {
+		if (emailDomains[i] === converToString) {
+			const value = emailDomains[i];
+			let email = new RegExp(`^[a-z0-9!#$%&'*+/=?^_\`{|}~-]+@${value}$`, 'i');
+			const result = email.test(getEmail);
+			console.log(result);
+			return result;
+		}
+	}
 }
 
 // error function to show error
@@ -42,7 +64,6 @@ function showError() {
 	setTimeout(() => {
 		errorMsg.classList.add('hidden');
 		emailInput.classList.remove('input-error');
-		
 	}, 2000);
 }
 
